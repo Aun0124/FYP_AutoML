@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="shortcut icon" href="#">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+    <title>Fraud</title>
+</head>
+<body>
+    <!-- Modal -->
+    <div id="fraudModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Field Description</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                   - It is important that credit card companies are able to recognize fraudulent credit card transactions so that customers are not charged for items that they did not purchase. <br>
+                   <br> - It contains only numerical input variables which are the result of a PCA transformation. Unfortunately, due to confidentiality issues, we cannot provide the original features and more background information about the data. Features V1, V2, … V28 are the principal components obtained with PCA, the only features which have not been transformed with PCA are 'Time' and 'Amount'. Feature 'Time' contains the seconds elapsed between each transaction and the first transaction in the dataset. The feature 'Amount' is the transaction Amount, this feature can be used for example-dependant cost-sensitive learning. Feature 'Class' is the response variable and it takes value 1 in case of fraud and 0 otherwise.
+
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        {% block content %}
+       <br>
+        <div class="container align-items-center justify-content-center setBounding" >
+            <h1 class="text-center alert-primary">
+                <a class="page-title-icon" href="/"><i class="fa fa-home" title="Home"></i></a>
+                <b>Credit Card Fraud Detection</b>
+            </h1><br>
+            
+            <div class="col-lg-12 border-dark border">
+                <form class="row form-group fraudField">
+                </form>
+                <!-- <input type="submit" class ="btn btn-block btn-secondary mb-2 classSubmit " value="Submit"> -->
+            </div>
+            <input type="submit" class ="btn btn-block btn-secondary mb-2 fraudSubmit " value="Submit">
+            <div class="alert alert-primary fraudAlert">
+                <h5> Fraud detected (YES/NO) =<p class="fraudMessage" style="display: inline;">{{ ans}}</p></h5>
+            </div>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#fraudModal">Check description</button>
+            <br>
+            target = {{target}}<br>
+            the model = {{model}}<br><br>
+            <!-- Trigger the modal with a button -->
+        </div>
+
+        {% endblock %}
+    </div>
+</body>
+</html>

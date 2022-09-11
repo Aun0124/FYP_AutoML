@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?version=1">
+    <link rel="shortcut icon" href="#">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+    <title>Homepage</title>
+</head>
+<body class="backImg">
+    {% csrf_token %}
+    <div class="container home-main " style="padding-top: 5%;">
+        <div class="d-flex align-items-center justify-content-center setBounding ">
+            <div class="col-12">
+                <div class="text-center row align-items-center backColor">
+                    <div class="col-sm pt-5 pb-5 backHome">
+                        <h1 class="col-sm homeHeader display-1"><b>Home Page</b></h1>
+                    </div>
+                    <div class="col-sm">
+                        <div style="padding-top:10px; padding-bottom: 15px; ">
+                            <a href="/bank" class="btn btn-primary btn-block btn-block setwrap"><h2 class="pt-3">Bank Marketing</h2></a>
+                        </div>
+                        <div style="padding-top:10px; padding-bottom: 15px">
+                            <a href="/house" class="btn btn-primary btn-block btn-block setwrap"><h2 class="pt-3">House Price</h2></a>
+                        </div>
+                        <div style="padding-top:10px; padding-bottom: 15px">
+                            <a href="/fraud" class="btn btn-primary btn-block btn-block setwrap"><h2 class="pt-3">Credit Fraud</h2></a>
+                        </div>
+                        <div style="padding-top:10px; padding-bottom: 15px">
+                            <a href="/toxic" class="btn btn-primary btn-block btn-block setwrap"><h2 class="pt-3">Toxic Comments</h2></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

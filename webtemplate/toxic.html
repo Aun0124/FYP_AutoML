@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="shortcut icon" href="#">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+    <title>Toxic</title>
+</head>
+<body>
+  <!-- Modal -->
+    <div id="toxicModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Field Description</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    1. One area of focus is the study of negative online behaviors, like toxic comments (i.e. comments that are rude, disrespectful or otherwise likely to make someone leave a discussion).<br>
+                    <br> 2. The toxic comment includes this six types of toxicity (toxic, severetoxic, obscene, threat, insult, identityhate). <br>
+                    <br> 3. Financial company would like to classify these comments to help their improvement in their service or systems. 
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+
+        </div>
+    </div>
+    <div>
+        {% block content %}
+       <br>
+        <div class="container align-items-center justify-content-center setBounding">
+            <h1 class="text-center alert-primary">
+                <a class="page-title-icon" href="/"><i class="fa fa-home" title="Home"></i></a>
+                <b>Toxic Comment Classification</b>
+            </h1><br>
+
+            <div class="col-lg-12 border-dark border">
+                <form class="row form-group toxicField">
+                </form>
+                <!-- <input type="submit" class ="btn btn-block btn-secondary mb-2 classSubmit " value="Submit"> -->
+            </div>
+            <input type="submit" class ="btn btn-block btn-secondary mb-2 toxicSubmit " value="Submit">
+            <div class="alert alert-primary toxicAlert">
+                <h5> Toxic Comment = <p class="toxicMessage" style="display: inline;">{{ ans}}</p></h5>
+            </div>
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#toxicModal">Check description</button>
+            <br>
+            target = {{target}}<br>
+            the model = {{model}}<br><br>
+        </div>
+
+        {% endblock %}
+    </div>
+</body>
+</html>

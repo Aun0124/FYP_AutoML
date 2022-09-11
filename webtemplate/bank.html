@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="shortcut icon" href="#">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+    <title>Bank Deposit Subscription</title>
+</head>
+<body>
+    <!-- Modal -->
+    <div id="bankModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Field Description</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    1 - age (numeric)
+                    <br>2 - job : type of job (categorical: 'admin.','blue-collar','entrepreneur','housemaid','management','retired','self-employed','services','student','technician','unemployed','unknown')
+                    <br>3 - marital : marital status (categorical: 'divorced','married','single','unknown'; note: 'divorced' means divorced or widowed)
+                    <br>4 - education (categorical: 'basic.4y','basic.6y','basic.9y','high.school','illiterate','professional.course','university.degree','unknown')
+                    <br>5 - default: has credit in default? (categorical: 'no','yes','unknown')
+                    <br>6 - housing: has housing loan? (categorical: 'no','yes','unknown')
+                    <br>7 - loan: has personal loan? (categorical: 'no','yes','unknown')
+                    <br># related with the last contact of the current campaign:
+                    <br>8 - contact: contact communication type (categorical: 'cellular','telephone')
+                    <br>9 - month: last contact month of year (categorical: 'jan', 'feb', 'mar', ..., 'nov', 'dec')
+                    <br>10 - day_of_week: last contact day of the week (categorical: 'mon','tue','wed','thu','fri')
+                    <br>11 - duration: last contact duration, in seconds (numeric). Important note: this attribute highly affects the output target (e.g., if duration=0 then y='no'). Yet, the duration is not known before a call is performed. Also, after the end of the call y is obviously known. Thus, this input should only be included for benchmark purposes and should be discarded if the intention is to have a realistic predictive model.
+                    <br># other attributes:
+                    <br>12 - campaign: number of contacts performed during this campaign and for this client (numeric, includes last contact)
+                    <br>13 - pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric; 999 means client was not previously contacted)
+                    <br>14 - previous: number of contacts performed before this campaign and for this client (numeric)
+                    <br>15 - poutcome: outcome of the previous marketing campaign (categorical: 'failure','nonexistent','success')
+                    <br># social and economic context attributes
+                    <br>16 - emp.var.rate: employment variation rate - quarterly indicator (numeric)
+                    <br>17 - cons.price.idx: consumer price index - monthly indicator (numeric)
+                    <br>18 - cons.conf.idx: consumer confidence index - monthly indicator (numeric)
+                    <br>19 - euribor3m: euribor 3 month rate - daily indicator (numeric)
+                    <br>20 - nr.employed: number of employees - quarterly indicator (numeric)
+                    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        {% block content %}
+        <div class="container align-items-center justify-content-center setBounding" >
+            <h1 class="text-center alert-primary">
+                <a class="page-title-icon" href="/"><i class="fa fa-home" title="Home"></i></a>
+                <b>Deposit Subscription</b>
+            </h1><br>
+            
+            <div class="col-lg-12 border-dark border">
+                <form class="row form-group classField">
+                </form>
+                <!-- <input type="submit" class ="btn btn-block btn-secondary mb-2 classSubmit " value="Submit"> -->
+            </div>
+            <input type="submit" class ="btn btn-block btn-secondary mb-2 bankSubmit " value="Submit">
+            <div class="alert alert-primary classAlert">
+                <h5>Will the client subscribe to the term deposit ? = <p class="classMessage" style="display: inline;">{{ans}}</p></h5>
+            </div>
+  
+         
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bankModal">Check description</button>
+            <br>target = {{target}}<br><br>
+            the model = {{model}}<br><br>
+        </div>
+
+        {% endblock %}
+    </div>
+</body>
+</html>
